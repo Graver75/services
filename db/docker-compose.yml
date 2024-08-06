@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  mysql:
+    image: mariadb
+    restart: always
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: multility
+      MYSQL_USER: bot
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      multility_network:
+        ipv4_address: 192.168.3.4
+networks:
+  multility_network:
+    external: true
